@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import axios from "axios";
 import Navbar from './navbar';
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 function GetExcel() {
 
@@ -110,9 +111,7 @@ function GetExcel() {
                     <button type='button' class="btn btn-danger ms-2" onClick={clear}>Clear</button>
                 </div>
             </form>
-
-            
-
+           
             <table class="table mt-2 table-striped">
                 <thead class = "bg-info text-light">
                     <tr>
@@ -127,6 +126,7 @@ function GetExcel() {
                         <th scope="col">ActionNumber</th>
                         <th scope="col">ActionName</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -145,6 +145,9 @@ function GetExcel() {
                                 <td>{i.ActionNumber}</td>
                                 <td>{i.ActionName}</td>
                                 <td>{i.Status}</td>
+                                <td>
+                                <Link to={"/editExcel/"+i["_id"]}>Edit</Link>
+                                </td>
                             </tr>
                         );
                     })}

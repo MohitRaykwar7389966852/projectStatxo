@@ -31,6 +31,15 @@ const addExcel = async function (req, res) {
 
 const getExcel = async function (req, res) {
     try {
+
+        let s = {}
+
+        if(req.query.sortby){
+            let sortby = req.query.sortby
+            let order = req.query.order
+            s[sortby] = Number(order)
+        }
+
         let f
         if (req.query) f = req.query
         let filter = {}
@@ -38,7 +47,7 @@ const getExcel = async function (req, res) {
         if (f.PostingYear) filter.PostingYear = f.PostingYear
         if (f.PostingMonth) filter.PostingMonth = f.PostingMonth
 
-        let data = await excelModel.find(filter)
+        let data = await excelModel.find(filter).sort(s)
         return res.status(200).send({ status: true, message: "excel data list", data: data })
     }
     catch (e) {

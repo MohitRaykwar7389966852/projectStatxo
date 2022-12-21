@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState} from 'react';
 import axios from "axios";
 import Navbar from './navbar';
@@ -7,8 +7,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function EditExcel() {
-
-    const navigate = useNavigate();
 
     const [acType, setAT] = useState('');
     const [acName, setAN] = useState('');
